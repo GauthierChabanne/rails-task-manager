@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container text-center">
   <h1>All my tasks</h1>
-  <ul>
+  <ul class="list-group border mx 400px">
   <% @tasks.each do |task| %>
   <% if task.completed  %>
     <li><i class="fas fa-check-square"></i><%= link_to task.title, task_path(task.id) %>
@@ -8,12 +8,13 @@
     <li><i class="fas fa-square"></i><%= link_to task.title, task_path(task.id) %>
   <% end %>
 
-   <%= link_to ' <i class="far fa-trash-alt"></i>'.html_safe,
+   <%= link_to '',
                 task_path(task.id),
                 method: :delete,
-                data: { confirm: "Delete #{task.title}?" } %></li>
+                data: { confirm: "Delete #{task.title}?" },
+                class: "far fa-trash-alt" %></li>
   <% end %>
   </ul>
 
-  <%= link_to "Create a task", tasks_new_path %>
+  <%= link_to '', tasks_new_path, class: "fas fa-plus-square" %>
 </div>
